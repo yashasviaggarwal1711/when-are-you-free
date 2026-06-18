@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schedule a Debrief</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="card">
+    <div class="decor">🎀 💌 🎀</div>
+
+    <h1>so... when are you free?</h1>
+
+    <p>
+      please select a suitable time to discuss
+      important matters, gossip and questionable decisions.
+    </p>
+
+    <label for="date">pick a date</label>
+    <input type="date" id="date" />
+
+    <label for="time">pick a time</label>
+    <input type="time" id="time" />
+
+    <button onclick="submitPlan()">submit availability ✨</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
