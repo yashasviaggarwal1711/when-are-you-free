@@ -1,3 +1,5 @@
+const formspreeEndpoint = "https://formspree.io/f/mnjykbkl";
+
 const loadingMessages = [
   "preparing questions...",
   "organising questions...",
@@ -9,7 +11,6 @@ const loadingMessages = [
 ];
 
 const noMessages = [
-  "no",
   "are you sure",
   "interesting",
   "so you fear questions",
@@ -25,9 +26,11 @@ const noMessages = [
 ];
 
 let noIndex = 0;
+let selectedName = "";
 let selectedDate = "";
 let selectedTime = "";
 let selectedTimezone = "";
+let selectedNote = "";
 
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("yesButton").addEventListener("click", showTimeSelection);
@@ -43,7 +46,7 @@ function handleNoClick() {
     noIndex++;
   }
 
-  const x = Math.random() * (window.innerWidth - 250);
+  const x = Math.random() * (window.innerWidth - 260);
   const y = Math.random() * (window.innerHeight - 100);
 
   button.classList.add("moving");
@@ -61,6 +64,9 @@ function showTimeSelection() {
     <h1>when are you available?</h1>
 
     <p>please select a suitable time to answer the questions.</p>
+
+    <label for="name">name</label>
+    <input type="text" id="name" placeholder="your official name for the record">
 
     <label for="date">date</label>
     <input type="date" id="date">
@@ -81,25 +87,62 @@ function showTimeSelection() {
       <option value="Other">Other</option>
     </select>
 
+    <label for="note">optional statement</label>
+    <textarea id="note" placeholder="anything you would like to say before questioning begins"></textarea>
+
     <button class="yes-button" id="submitButton">submit availability</button>
 
     <div id="result"></div>
   `;
 
-  document.getElementById("submitButton").addEventListener("click", startAppointmentProcess);
+  document.getElementById("submitButton").addEventListener("click", submitToFormspree);
 }
 
-function startAppointmentProcess() {
+function submitToFormspree() {
+  selectedName = document.getElementById("name").value.trim();
   selectedDate = document.getElementById("date").value;
   selectedTime = document.getElementById("time").value;
   selectedTimezone = document.getElementById("timezone").value;
+  selectedNote = document.getElementById("note").value.trim();
 
   const result = document.getElementById("result");
 
-  if (!selectedDate || !selectedTime || !selectedTimezone) {
-    result.innerHTML = "incomplete. the questions cannot proceed without documentation.";
+  if (!selectedName || !selectedDate || !selectedTime || !selectedTimezone) {
+    result.innerHTML = `<div class="error">incomplete. the questions cannot proceed without documentation.</div>`;
     return;
   }
+
+  result.innerHTML = "submitting documentation...";
+
+  fetch(formspreeEndpoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      name: selectedName,
+      date: selectedDate,
+      time: selectedTime,
+      timezone: selectedTimezone,
+      note: selectedNote,
+      subject: "New Questions Appointment"
+    })
+  })
+  .then(function (response) {
+    if (response.ok) {
+      startAppointmentProcess();
+    } else {
+      result.innerHTML = `<div class="error">submission failed. bureaucracy has collapsed. please try again.</div>`;
+    }
+  })
+  .catch(function () {
+    result.innerHTML = `<div class="error">submission failed. the department is unreachable.</div>`;
+  });
+}
+
+function startAppointmentProcess() {
+  const result = document.getElementById("result");
 
   result.innerHTML = `<h1 class="loading-text" id="loadingText">preparing questions...</h1>`;
 
@@ -124,6 +167,14 @@ function showCertificate() {
     <div class="certificate">
       <div class="certificate-title">CERTIFICATE OF APPOINTMENT</div>
       <div class="certificate-subtitle">for the formal answering of questions</div>
+
+      <div class="certificate-line"></div>
+
+      <div>This certifies that</div>
+
+      <div class="name-line">${selectedName}</div>
+
+      <div>has agreed to answer the questions.</div>
 
       <div class="certificate-line"></div>
 
