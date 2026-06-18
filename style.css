@@ -76,3 +76,19 @@ button:hover {
   font-size: 18px;
   color: #333;
 }
+
+
+.hidden {
+  display: none;
+}
+
+.button-group {
+  margin-top: 20px;
+  position: relative;
+  height: 120px;
+}
+
+.no-button {
+  position: absolute;
+  right: 0;
+}
