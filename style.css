@@ -36,7 +36,6 @@ body {
 
 h1 {
   font-size: 46px;
-  margin: 18px 0 12px;
   color: #2d2d2d;
   text-transform: lowercase;
 }
@@ -47,7 +46,7 @@ p {
   line-height: 1.5;
 }
 
-.main-button {
+button {
   width: 100%;
   padding: 20px;
   margin-top: 18px;
@@ -65,6 +64,12 @@ p {
 
 .no-button {
   background: #f8a8cf;
+}
+
+.no-button.moving {
+  position: fixed;
+  width: 210px;
+  z-index: 1000;
 }
 
 label {
