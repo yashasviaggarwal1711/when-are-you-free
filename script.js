@@ -1,25 +1,25 @@
 function showDebriefPage() {
-  document.getElementById("page1").classList.add("hidden");
-  document.getElementById("page2").classList.remove("hidden");
+  document.getElementById("page1").style.display = "none";
+  document.getElementById("page2").style.display = "block";
 }
 
 function moveButton() {
+
   const button = document.getElementById("noButton");
 
-  const maxX = window.innerWidth - 150;
-  const maxY = window.innerHeight - 100;
-
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
+  const x = Math.random() * (window.innerWidth - 200);
+  const y = Math.random() * (window.innerHeight - 100);
 
   button.style.position = "fixed";
-  button.style.left = `${x}px`;
-  button.style.top = `${y}px`;
+  button.style.left = x + "px";
+  button.style.top = y + "px";
 }
 
 function submitPlan() {
+
   const date = document.getElementById("date").value;
   const time = document.getElementById("time").value;
+
   const result = document.getElementById("result");
 
   if (!date || !time) {
@@ -29,5 +29,9 @@ function submitPlan() {
   }
 
   result.innerHTML =
-    `Perfect. You are now booked for <br><strong>${date} at ${time}</strong> 💅`;
+    "Perfect. You are now booked for:<br><br><strong>" +
+    date +
+    " at " +
+    time +
+    "</strong> 💅";
 }
