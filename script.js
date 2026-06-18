@@ -11,7 +11,6 @@ const loadingMessages = [
 ];
 
 const noMessages = [
-  "no",
   "are you sure",
   "that's unfortunate",
   "please answer correctly",
@@ -28,23 +27,26 @@ const noMessages = [
 
 let noIndex = 0;
 
-function moveButton() {
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("yesButton").addEventListener("click", showLoadingScreen);
+  document.getElementById("noButton").addEventListener("click", handleNoClick);
+});
+
+function handleNoClick() {
   const button = document.getElementById("noButton");
+
+  button.innerText = noMessages[noIndex];
 
   if (noIndex < noMessages.length - 1) {
     noIndex++;
   }
 
-  button.innerText = noMessages[noIndex];
+  const x = Math.random() * (window.innerWidth - 230);
+  const y = Math.random() * (window.innerHeight - 100);
 
-  const x = Math.random() * (window.innerWidth - 220);
-  const y = Math.random() * (window.innerHeight - 120);
-
-  button.style.position = "fixed";
+  button.classList.add("moving");
   button.style.left = x + "px";
   button.style.top = y + "px";
-  button.style.width = "180px";
-  button.style.zIndex = "1000";
 }
 
 function showLoadingScreen() {
@@ -57,7 +59,7 @@ function showLoadingScreen() {
 
   let index = 0;
 
-  const interval = setInterval(() => {
+  const interval = setInterval(function () {
     index++;
 
     if (index < loadingMessages.length) {
@@ -78,10 +80,7 @@ function showCalendarForm() {
 
     <h1>so... when are you free?</h1>
 
-    <p>
-      your application has been approved.
-      please select a suitable date and time.
-    </p>
+    <p>your application has been approved. please select a suitable date and time.</p>
 
     <label for="date">date</label>
     <input type="date" id="date">
@@ -89,12 +88,12 @@ function showCalendarForm() {
     <label for="time">time</label>
     <input type="time" id="time">
 
-    <button class="main-button yes-button" onclick="submitPlan()">
-      schedule debrief
-    </button>
+    <button class="yes-button" id="submitButton">schedule debrief</button>
 
     <div id="result"></div>
   `;
+
+  document.getElementById("submitButton").addEventListener("click", submitPlan);
 }
 
 function submitPlan() {
