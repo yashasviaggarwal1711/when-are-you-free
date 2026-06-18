@@ -1,1 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debrief Request</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- PAGE 1 -->
+
+  <div class="card" id="page1">
+    <div class="decor">🎀 💌 🎀</div>
+
+    <h1>do you want to debrief?</h1>
+
+    <p>
+      this is a matter of great importance.
+    </p>
+
+    <div class="button-container">
+
+      <button class="main-button"
+              onclick="showDebriefPage()">
+        yes 💅
+      </button>
+
+      <button class="main-button"
+              id="noButton"
+              onmouseover="moveButton()">
+        no
+      </button>
+
+    </div>
+  </div>
+
+  <!-- PAGE 2 -->
+
+  <div class="card hidden" id="page2">
+
+    <div class="decor">🎀 💌 🎀</div>
+
+    <h1>so... when are you free?</h1>
+
+    <p>
+      please select a suitable time to discuss
+      important matters, gossip and questionable decisions.
+    </p>
+
+    <label>pick a date</label>
+    <input type="date" id="date">
+
+    <label>pick a time</label>
+    <input type="time" id="time">
+
+    <button class="main-button"
+            onclick="submitPlan()">
+      submit availability ✨
+    </button>
+
+    <div id="result"></div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
 
