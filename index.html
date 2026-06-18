@@ -1,14 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Schedule a Debrief</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Important Question</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="card">
+
+  <!-- PAGE 1 -->
+
+  <div class="card" id="page1">
+
+    <div class="decor">🎀 💌 🎀</div>
+
+    <h1>do you want to debrief?</h1>
+
+    <p>
+      this is a matter of great importance.
+    </p>
+
+    <div class="button-group">
+      <button onclick="showDebriefPage()">yes 💅</button>
+
+      <button
+        id="noButton"
+        onmouseover="moveButton()"
+        ontouchstart="moveButton()"
+        class="no-button"
+      >
+        no
+      </button>
+    </div>
+
+  </div>
+
+
+  <!-- PAGE 2 -->
+
+  <div class="card hidden" id="page2">
+
     <div class="decor">🎀 💌 🎀</div>
 
     <h1>so... when are you free?</h1>
@@ -19,16 +51,20 @@
     </p>
 
     <label for="date">pick a date</label>
-    <input type="date" id="date" />
+    <input type="date" id="date">
 
     <label for="time">pick a time</label>
-    <input type="time" id="time" />
+    <input type="time" id="time">
 
-    <button onclick="submitPlan()">submit availability ✨</button>
+    <button onclick="submitPlan()">
+      submit availability ✨
+    </button>
 
     <div id="result"></div>
+
   </div>
 
   <script src="script.js"></script>
+
 </body>
 </html>
