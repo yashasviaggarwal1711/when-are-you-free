@@ -8,55 +8,23 @@
 </head>
 <body>
 
-  <div class="background-hearts">
-    <span>🎀</span>
-    <span>✨</span>
-    <span>💌</span>
-    <span>🫧</span>
-    <span>💅</span>
-  </div>
-
-  <div class="card" id="page1">
-    <div class="badge">urgent meeting request</div>
-    <div class="decor">🎀 💌 🎀</div>
+  <div class="card" id="app">
+    <div class="badge">official debrief portal</div>
+    <div class="decor">🎀 📋 🎀</div>
 
     <h1>do you want to debrief?</h1>
 
-    <p>this is a matter of national importance.</p>
+    <p>please answer this simple and legally straightforward question.</p>
 
-    <div class="button-container">
-      <button class="main-button yes-button" onclick="showDebriefPage()">
-        yes obviously 💅
-      </button>
-
-      <button class="main-button no-button" id="noButton" onmouseover="moveButton()" ontouchstart="moveButton()">
-        no
-      </button>
-    </div>
-  </div>
-
-  <div class="card hidden" id="page2">
-    <div class="badge">calendar committee</div>
-    <div class="decor">☕ 🎀 🕯️</div>
-
-    <h1>so... when are you free?</h1>
-
-    <p>please select a suitable time for gossip, analysis and dramatic conclusions.</p>
-
-    <label for="date">pick a date</label>
-    <input type="date" id="date">
-
-    <label for="time">pick a time</label>
-    <input type="time" id="time">
-
-    <button class="main-button yes-button" onclick="submitPlan()">
-      submit availability ✨
+    <button class="main-button yes-button" onclick="showLoadingScreen()">
+      yes
     </button>
 
-    <div id="result"></div>
+    <button class="main-button no-button" id="noButton" onmouseover="moveButton()" ontouchstart="moveButton()">
+      no
+    </button>
   </div>
 
   <script src="script.js"></script>
-
 </body>
 </html>
