@@ -3,16 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Important Question</title>
+  <title>Debrief Request</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
   <!-- PAGE 1 -->
 
   <div class="card" id="page1">
-
     <div class="decor">🎀 💌 🎀</div>
 
     <h1>do you want to debrief?</h1>
@@ -21,21 +19,21 @@
       this is a matter of great importance.
     </p>
 
-    <div class="button-group">
-      <button onclick="showDebriefPage()">yes 💅</button>
+    <div class="button-container">
 
-      <button
-        id="noButton"
-        onmouseover="moveButton()"
-        ontouchstart="moveButton()"
-        class="no-button"
-      >
+      <button class="main-button"
+              onclick="showDebriefPage()">
+        yes 💅
+      </button>
+
+      <button class="main-button"
+              id="noButton"
+              onmouseover="moveButton()">
         no
       </button>
+
     </div>
-
   </div>
-
 
   <!-- PAGE 2 -->
 
@@ -50,13 +48,14 @@
       important matters, gossip and questionable decisions.
     </p>
 
-    <label for="date">pick a date</label>
+    <label>pick a date</label>
     <input type="date" id="date">
 
-    <label for="time">pick a time</label>
+    <label>pick a time</label>
     <input type="time" id="time">
 
-    <button onclick="submitPlan()">
+    <button class="main-button"
+            onclick="submitPlan()">
       submit availability ✨
     </button>
 
